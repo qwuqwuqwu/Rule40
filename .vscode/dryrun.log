@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/qwuqwuqwu/Project/C++/test_Rule40/Rule40'
+make: Leaving directory `/Users/qwuqwuqwu/Project/C++/test_Rule40/Rule40'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
