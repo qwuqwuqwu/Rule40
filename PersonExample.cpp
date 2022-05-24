@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string.h>
+#include <memory> // for std::shared_ptr
 using namespace std;
 
 #define Max_Formatted_Field_value_Length    ( 999 )
@@ -68,21 +70,21 @@ const char* PersonInfo::valueDelimClose() const
 const char* PersonInfo::theName() const
 {
     static char value[ Max_Formatted_Field_value_Length ];
-    std::strcpy( value, valueDelimOpen() );
+    strcpy( value, valueDelimOpen() );
 
-    std::strcat( value, m_pNameChar );
+    strcat( value, m_pNameChar );
 
-    std::strcat( value, valueDelimClose() );
+    strcat( value, valueDelimClose() );
     return value;
 }
 const char* PersonInfo::theBirthDate() const
 {
     static char value[ Max_Formatted_Field_value_Length ];
-    std::strcpy( value, valueDelimOpen() );
+    strcpy( value, valueDelimOpen() );
 
-    std::strcat( value, m_pBirthDateChar );
+    strcat( value, m_pBirthDateChar );
 
-    std::strcat( value, valueDelimClose() );
+    strcat( value, valueDelimClose() );
     return value;
 }
 
