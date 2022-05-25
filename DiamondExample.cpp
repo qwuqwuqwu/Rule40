@@ -22,6 +22,7 @@ public:
 
     void checkOut( void )
     {
+        cout << "B checkOut" << endl;
         cout << "a = " << m_na << ", b = " << m_b << endl;
     };
 private:
@@ -38,6 +39,7 @@ public:
 private:
     void checkOut( void )
     {
+        cout << "C checkOut" << endl;
         cout << "a = " << m_na << ", c = " << m_c << endl;
     };
 
@@ -57,7 +59,7 @@ private:
     int m_nd;
 };
 
-// virtual inheritance
+// virtual inheritance======================================================
 
 class VB : virtual public A {
 public:
@@ -69,6 +71,7 @@ public:
 
     void checkOut( void )
     {
+        cout << "VB checkOut" << endl;
         cout << "a = " << m_na << ", b = " << m_b << endl;
     };
 private:
@@ -85,6 +88,7 @@ public:
 private:
     void checkOut( void )
     {
+        cout << "VC checkOut" << endl;
         cout << "a = " << m_na << ", c = " << m_c << endl;
     };
 
@@ -110,11 +114,12 @@ int main( void )
     D MyD( 11, 1.1, 22, 2.2, 33 );
     // MyD.checkOut(); // error: member 'checkOut' found in multiple base classes of different types
     MyD.B::checkOut();
+    // MyD.C::checkOut(); // error: 'void C::checkOut()' is private within this context
     cout << "size of MyD is " << sizeof( MyD ) << endl;
 
     VD MyVD( 11, 1.1, 22, 2.2, 33 );
-    // MyD.checkOut(); // error: member 'checkOut' found in multiple base classes of different types
     MyVD.VB::checkOut();
+    // MyVD.VC::checkOut(); //  error: 'void VC::checkOut()' is private within this context
     cout << "size of MyVD is " << sizeof( MyVD ) << endl;
     return 0;
 }
