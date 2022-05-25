@@ -20,14 +20,14 @@ public:
     DatabaseID( int nIndex ) : m_nIndex( nIndex )
     {
         cout << "DatabaseID" << endl;
-    };
+    }
     int m_nIndex;
 };
 
 DatabaseID askUserForDatabaseID( void )
 { 
     char c;
-    cout << "Input a or b : ";
+    cout << "Input key a or b : ";
     cout << endl;
     cin >> c;
     DatabaseID LocalID( c - 'a' );
@@ -101,14 +101,31 @@ public:
     }
 
     virtual std::string name() const
-    { return PersonInfo::theName(); }
+    // CPerson inherit IPerson's interface
+    {
+        // CPerson is implemented in terms of PersonInfo
+        return PersonInfo::theName();
+    }
 
     virtual std::string birthDate() const
-    { return PersonInfo::theBirthDate(); }
+    // CPerson inherit IPerson's interface
+    {
+        // CPerson is implemented in terms of PersonInfo
+        return PersonInfo::theBirthDate();
+    }
 
 private:
-    const char* valueDelimOpen() const { return "QWU--"; };
-    const char* valueDelimClose() const { return "--UWQ"; };
+    // override this function to change base's class behavior
+    const char* valueDelimOpen() const
+    { 
+        return "QWU--";
+    }
+    
+    // override this function to change base's class behavior
+    const char* valueDelimClose() const 
+    { 
+        return "--UWQ";
+    }
 };
 
 std::shared_ptr< IPerson > makePerson( DatabaseID personIdentifier )
@@ -128,5 +145,7 @@ int main( void )
     cout << "USER PERSONINFO" << endl;
     PersonInfo MyPersonInfo( askUserForDatabaseID() );
     cout << "Your name is " << MyPersonInfo.theName() << ", birth date is " << MyPersonInfo.theBirthDate() << endl;
+
+    cout << "before leaving main" << endl; 
     return 0;
 }
